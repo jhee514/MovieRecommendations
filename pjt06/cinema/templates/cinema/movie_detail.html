@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}{{ movie.title }}{% endblock title %}
+
+{% block body %}
+
+<ul class="list-group">
+  <li class="list-group-item"><strong>{{ movie.title }}</strong></li>
+  <li class="list-group-item">{{ movie.title_en }}</li>
+  <li class="list-group-item">{{ movie.audience }}</li>
+  <li class="list-group-item">{{ movie.open_data }}</li>
+  <li class="list-group-item">{{ movie.genre }}</li>
+  <li class="list-group-item">{{ movie.watch_grade }}</li>
+  <li class="list-group-item">{{ movie.score }}</li>
+  <li class="list-group-item">{{ movie.poster_url }}</li>
+  <li class="list-group-item">{{ movie.description }}</li>
+</ul>
+
+
+<hr>
+<a href="{% url 'cinema:movie_list' %}"><button>목록</button></a>
+<a href="{% url 'cinema:update_movie' movie.id %}"><button>수정</button></a>
+<form action="{% url 'cinema:delete_movie' movie.id %}" method="POST">
+    {% csrf_token %}<button>삭제</button></form>
+<hr>
+{% include 'cinema/_review.html' %}
+
+{% endblock body %}

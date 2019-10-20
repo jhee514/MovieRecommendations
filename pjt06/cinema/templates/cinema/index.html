@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}INDEX{% endblock title %}
+
+{% block body %}
+<div class="container">
+    <img src="{% static 'cinema/images/IMG_2802.jpg' %}" alt="peng-su">
+    {% comment %} <img src="static/cinema/images/IMG_2802.jpg" alt=""> {% endcomment %}
+    {% comment %} 위아래가 같은 결과 값을 나타내는 것은 개발자 입장이고, 사용자의 브라우져는 cache 를 지우지 않으면 사진이 바뀌어도 이름이 같게 교체해도 알지 못하고 저장된 파일로 내보내게 된다. {% endcomment %}
+    {% comment %} 그래서 static 을 사용해서 원하는 이미지나 파일을 지정해서 사용하는 것 {% endcomment %}
+</div>
+<a href="{% url 'cinema:create_movie' %}">새 영화 등록</a>
+{% if movies %}
+{% for movie in movies %}
+<div>
+    <a href="{% url 'cinema:movie_detail' movie.id %}">{{ movie.title }}</a>
+    {{ movie.score }}
+</div>
+{% endfor %}
+{% endif %}
+{% endblock body %}

@@ -1,0 +1,51 @@
+nav {
+  font-family: 'Poiret One', cursive;
+  top: 0;
+}
+
+
+body {
+  height: 10000px;
+  font-family: 'Poiret One', cursive;
+}
+
+header {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  padding: 40px;
+  margin-bottom: 10px;
+  clear: left;
+  background-image: url(images/header.jpg);
+  background-size: 100%;
+  font-family: 'Poiret One', cursive;
+}
+
+h2 {
+  text-align: center;
+  line-height: 350px;
+}
+
+
+footer {
+  width: 100%;
+  height: 50px;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  line-height: 50px;
+  font-size: 1rem;
+  background-color: white;
+  color: black;
+  font-family: 'Poiret One', cursive;
+
+}
+
+footer > a {
+  color: black;
+  float: right;
+}
+
+a:hover {
+  color: coral;
+  text-decoration-line: none;
+}

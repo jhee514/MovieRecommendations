@@ -1,0 +1,22 @@
+{% load bootstrap4 %}
+<form action="{% url 'cinema:create_review' movie.id %}" method="POST">
+{% csrf_token %}
+{% bootstrap_form review_form %}
+<input type="submit" value="등록">
+</form>
+
+<hr>
+
+{% if reviews %}
+{% for review in reviews %}
+{{ review.content }}
+{{ review.score }}
+{{ review.created_at }}
+<form action="{% url 'cinema:delete_review' movie.id review.id %}" method="POST">
+{% csrf_token %}
+<button>X</button>
+</form>
+{% endfor %}
+
+
+{% endif %}

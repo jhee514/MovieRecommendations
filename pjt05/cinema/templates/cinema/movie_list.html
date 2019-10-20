@@ -1,0 +1,21 @@
+{% extends 'cinema/base.html' %}
+{% block title %}Movie List{% endblock title %}
+{% block body %}
+    <div class="mx-5 mt-5 p-3 text-monospace">
+        Movie List
+    </div>
+    {% if movies %}
+        <ul class="m-5 p-3 text-monospace">
+        {% for movie in movies %}
+            <li class="list-group-item list-group-item-light">
+            <a class="text-reset" href="{% url 'cinema:movie_detail' movie.id %}">{{ movie.title }} {{ movie.score }}</a>
+            </li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    <div class="m-3 px-4 float-right text-monospace">
+        <a href="{% url 'cinema:create_movie' %}">
+        <button type="button" class="btn btn-outline-dark">새 영화 등록</button>
+        </a>
+    </div>
+{% endblock body %}

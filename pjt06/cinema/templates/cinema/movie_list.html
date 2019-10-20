@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Movie List{% endblock title %}
+
+{% block body %}
+<a href="{% url 'cinema:create_movie' %}">새 영화 등록</a>
+{% if movies %}
+{% for movie in movies %}
+<div class="row">
+    <a href="{% url 'cinema:movie_detail' movie.id %}">{{ movie.title }}</a>
+    {{ movie.title_en }}
+    {% comment %} {{ movie.audience }}
+    {{ movie.open_data }}
+    {{ movie.genre }}
+    {{ movie.watch_grade }} {% endcomment %}
+    {{ movie.score }}
+    {% comment %} {{ movie.poster_url }} {% endcomment %}
+    {% comment %} {{ movie.description }} {% endcomment %}
+</div>
+{% endfor %}
+{% endif %}
+{% endblock body %}

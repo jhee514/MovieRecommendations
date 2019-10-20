@@ -1,0 +1,42 @@
+h4  {
+  /* font-family: 'Noto Serif KR', serif; */
+}
+
+
+h4 {
+  font-size: 1.3rem;
+}
+
+
+.subtitle {
+  margin: 3rem;
+  text-align: center;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+
+}
+
+.list {
+  column-gap: 10px;
+}
+
+.card-text {
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+
+.high-rate {
+  color: blue;
+}
+
+
+.rate {
+  color: black;
+}
+
+
+.card  {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  padding: 1rem;
+}

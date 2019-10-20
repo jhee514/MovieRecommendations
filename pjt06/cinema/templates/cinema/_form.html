@@ -1,0 +1,11 @@
+{% load bootstrap4 %}
+<form method="POST">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <div class="m-10 p-4">
+        <a href="{% url 'cinema:movie_list' %}">
+        <button type="button" class="btn btn-outline-dark">취소</button>
+        </a>
+        <button type="submit" class="btn btn-outline-dark float-right">제출</button>
+    </div>
+</form>
