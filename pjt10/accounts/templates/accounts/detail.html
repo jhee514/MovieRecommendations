@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}User Detail{% endblock title %}
+{% block body %}
+
+
+<hr>
+<div>
+    <h1>{{user_info.username}}의 목록</h1>
+</div>
+<div>
+    <h2>{{user_info.first_name}} {{user_info.last_name}} | {{user_info.email}}</h2>
+</div>
+<form action="{% url 'accounts:follow' user_info.id %}" method="POST">
+	{% csrf_token %}
+	<button style="border: 0; background: none;"></button>
+    <button>
+		{% if is_like %}
+			<i class="fas fa-heart fa-lg" style="color: #ed4956;"></i>
+		{% else %}
+			<i class="fas fa-heart fa-lg" style="color: black;"></i>
+				<span class="badge badge-light"></span>
+		{% endif %}
+    </button>
+</form>
+<hr>
+
+<div>
+    <h2>좋아하는 영화</h2>
+    {% for movie in user_info.like_movies.all %}
+    <ul class="list-group list-group-flush">
+        <a href="{% url 'movies:movie_detail' movie.id %}">
+            <li class="list-group-item">{{movie.title}}
+        </a>
+        </li>
+    </ul>
+    {% endfor %}
+
+    <h2>작성한 영화평점</h2>
+    {% for review in reviews %}
+    <ul class="list-group list-group-horizontal">
+        <a href="{% url 'movies:movie_detail' review.movie.id %}">
+            <li class="list-group-item"> {{review.content}} : {{review.score}}
+        </a>
+        </li>
+    </ul>
+    {% endfor %}
+
+    <h2>팔로잉 : {{ stars }}</h2>
+    <h2>팔로워 : {{ fans }}</h2>
+
+    {% endblock body %}
+</div>

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}User List{% endblock title %}
+
+{% block body %}
+<div>
+    {% if users %}
+
+    {% for user in users %}
+    <a href="{% url 'accounts:user_page' user.id %}">
+    <ul><li>{{ user.username }}</li></ul>
+    </a>
+    {% endfor %}
+
+    {% endif %}
+</div>
+{% endblock body %}

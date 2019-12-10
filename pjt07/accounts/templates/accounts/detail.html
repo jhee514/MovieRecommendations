@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}User Detail{% endblock title %}
+{% block body %}
+
+
+<hr>
+<div><h1 >{{user_info.username}}의 목록</h1></div>
+<div><h2>{{user_info.first_name}} {{user_info.last_name}} | {{user_info.email}}</h2></div>
+<hr>
+<div>
+<h2>좋아하는 영화</h2>
+{% for movie in user_info.like_movies.all %}
+<ul class="list-group list-group-flush">
+<a href="{% url 'movies:movie_detail' movie.id %}"><li class="list-group-item">{{movie.title}}</a>
+</li></ul>
+{% endfor %}
+
+<h2>작성한 영화평점</h2>
+{% for review in user_info.reviews.all %}
+<ul class="list-group list-group-horizontal">
+<a href="{% url 'movies:movie_detail' review.movie.id %}">
+<li class="list-group-item"> {{review.movie.title}} : {{review.score}}
+</a>
+</li>
+</ul>
+{% endfor %}
+{% comment %} <ul>{{user_info.reviews}}</ul>
+
+    <h2>작성한 영화평점</h2>
+    {% if user_info.reviews.all %}
+    <li>
+        {% for review in user_info.reviews.all %}
+        <ul>{{review.movie.title}} | {{review.score}}</ul>
+        {% endfor %}
+    </li>
+    {% endif %}
+</div> {% endcomment %}
+{% endblock body %}

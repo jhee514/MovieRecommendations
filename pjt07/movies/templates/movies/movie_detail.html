@@ -1,0 +1,36 @@
+{% extends 'base.html' %}   
+
+{% block body %}
+    <a href="{% url 'movies:movie_list' %}">목록으로</a>
+    <h1 class="display-2">{{ movie.title }}</h1>
+    <div>
+        <p>{{ movie.genre.name }}  | 관객수 {{ movie.audience}} </p>
+        <img src="{{ movie.poster_url }}" alt="{{ movie.title }}" width="500">
+        <p>{{ movie.description }}</p>
+        <p>
+    
+    <form action="{% url 'movies:reviews_new' movie.id %}" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    {{ review_form }}
+
+    <button type = "submit">제출</button>
+    </form>
+    <div>
+        {% for review in reviews %}
+        <p>{{review.user}} | {{review.content}} | {{review.score}} </p>
+        {% endfor %}
+    </div>
+
+    <a href="{% url 'movies:like' movie.id %}">
+    <!-- user 와 request.user 는 같다. -->
+    {% if request.user in movie.like_users.all %}
+        좋아요 취소
+    {% else %}
+        좋아요
+    {% endif %}
+    </a>
+    </div>
+    
+    
+{% endblock body %}
