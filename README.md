@@ -1,2 +1,3 @@
-# Projects
-Personal projects for practice Python, Django, SQLite, etc..
+# Movie Recommendation
+
+Repository of series of prep projects for project MovieFocusingYou.
